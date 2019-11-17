@@ -11,7 +11,7 @@ import {
 import L from "leaflet";
 import styled from "styled-components";
 
-const MARKER_RADIUS = 32;
+const MARKER_RADIUS = 48;
 
 const LeafIcon = L.Icon.extend({
   options: {
@@ -28,9 +28,32 @@ const StyledMap = styled(Map)`
   width: 100vw;
   height: 80vmin;
 
+  .leaflet-tooltip {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
   .leaflet-marker-icon {
+    margin-left: -48px;
+    margin-top: -48px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid black;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 680px) {
+    .leaflet-tooltip {
+      display: none;
+    }
+
+    .leaflet-marker-icon {
+      margin-left: -${MARKER_RADIUS / 2}px !important;
+      margin-top: -${MARKER_RADIUS / 2}px !important;
+      width: ${MARKER_RADIUS}px !important;
+      height: ${MARKER_RADIUS}px !important;
+    }
   }
 `;
 
@@ -39,7 +62,7 @@ const mbAttr =
   '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 const mbUrl =
-  "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam9obndhbGxleSIsImEiOiJjajhvZ2x0aGcwM2g5Mnhxazd0d3dzN2VkIn0.75gW-934leS0dstEuhzwsg";
+  "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}{r}.png?access_token=pk.eyJ1Ijoiam9obndhbGxleSIsImEiOiJjajhvZ2x0aGcwM2g5Mnhxazd0d3dzN2VkIn0.75gW-934leS0dstEuhzwsg";
 
 const SimpleExample = ({ onClick }) => {
   const [state, setState] = useState({
@@ -50,11 +73,11 @@ const SimpleExample = ({ onClick }) => {
 
   const bridges = [
     {
-      name: "Gateshead Millenium Bridge",
+      name: "Gateshead Millennium Bridge",
       position: [54.969964, -1.599182],
       icon: new LeafIcon({
-        iconUrl: require("./assets/gateshead_millenium_bridge.jpg"),
-        iconRetinaUrl: require("./assets/gateshead_millenium_bridge.jpg")
+        iconUrl: require("./assets/gateshead_millennium_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/gateshead_millennium_bridge_512x512.png")
       }),
       content: (
         <p>
@@ -71,16 +94,16 @@ const SimpleExample = ({ onClick }) => {
           structure in the city.
         </p>
       ),
-      direction: "right",
-      offset: [MARKER_RADIUS, 0],
+      direction: "bottom",
+      offset: [0, MARKER_RADIUS],
       positionOffset: [0.008, 0.01]
     },
     {
       name: "Tyne Bridge",
       position: [54.968104, -1.606167],
       icon: new LeafIcon({
-        iconUrl: require("./assets/tyne_bridge.jpg"),
-        iconRetinaUrl: require("./assets/tyne_bridge.jpg")
+        iconUrl: require("./assets/tyne_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/tyne_bridge_512x512.png")
       }),
       content: (
         <p>
@@ -102,22 +125,26 @@ const SimpleExample = ({ onClick }) => {
       name: "Swing Bridge",
       position: [54.967575, -1.607586],
       icon: new LeafIcon({
-        iconUrl: require("./assets/swing_bridge.jpg"),
-        iconRetinaUrl: require("./assets/swing_bridge.jpg")
+        iconUrl: require("./assets/swing_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/swing_bridge_512x512.png")
       }),
       content: (
         <p>
-          The <strong>Gateshead Millennium Bridge</strong> is a pedestrian and
-          cyclist tilt bridge spanning the River Tyne in North East England
-          between Gateshead's Quays arts quarter on the south bank, and the
-          Quayside of Newcastle upon Tyne on the north bank. Opened for public
-          use in 2001, the award-winning structure was conceived and designed by
-          architect WilkinsonEyre and structural engineer Gifford.[1] The bridge
-          is sometimes referred to as the 'Blinking Eye Bridge'[2] or the
-          'Winking Eye Bridge'[3] due to its shape and its tilting method. In
-          terms of height, the Gateshead Millennium Bridge is slightly shorter
-          than the neighbouring Tyne Bridge, and stands as the sixteenth tallest
-          structure in the city.
+          A <strong>swing</strong> bridge is a movable bridge that has as its
+          primary structural support a vertical locating pin and support ring,
+          usually at or near to its center of gravity, about which the turning
+          span can then pivot horizontally as shown in the animated illustration
+          to the right. Small swing bridges as found over canals may be pivoted
+          only at one end, opening as would a gate, but require substantial
+          underground structure to support the pivot. In its closed position, a
+          swing bridge carrying a road or railway over a river or canal, for
+          example, allows traffic to cross. When a water vessel needs to pass
+          the bridge, road traffic is stopped (usually by traffic signals and
+          barriers), and then motors rotate the bridge horizontally about its
+          pivot point. The typical swing bridge will rotate approximately 90
+          degrees, or one-quarter turn; however, a bridge which intersects the
+          navigation channel at an oblique angle may be built to rotate only 45
+          degrees, or one-eighth turn, in order to clear the channel.
         </p>
       ),
       direction: "right",
@@ -128,8 +155,8 @@ const SimpleExample = ({ onClick }) => {
       name: "High Level Bridge",
       position: [54.967008, -1.608637],
       icon: new LeafIcon({
-        iconUrl: require("./assets/high_level_bridge.jpg"),
-        iconRetinaUrl: require("./assets/high_level_bridge.jpg")
+        iconUrl: require("./assets/high_level_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/high_level_bridge_512x512.png")
       }),
       content: (
         <p>
@@ -152,24 +179,24 @@ const SimpleExample = ({ onClick }) => {
     },
     {
       name: "Queen Elizabeth II Metro Bridge",
+      label: (
+        <>
+          Queen Elizabeth II
+          <br />
+          Metro Bridge
+        </>
+      ),
       position: [54.964493, -1.613873],
       icon: new LeafIcon({
-        iconUrl: require("./assets/queen_elizabeth_ii_metro_bridge.jpg"),
-        iconRetinaUrl: require("./assets/queen_elizabeth_ii_metro_bridge.jpg")
+        iconUrl: require("./assets/queen_elizabeth_ii_metro_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/queen_elizabeth_ii_metro_bridge_512x512.png")
       }),
       content: (
         <p>
-          The <strong>Gateshead Millennium Bridge</strong> is a pedestrian and
-          cyclist tilt bridge spanning the River Tyne in North East England
-          between Gateshead's Quays arts quarter on the south bank, and the
-          Quayside of Newcastle upon Tyne on the north bank. Opened for public
-          use in 2001, the award-winning structure was conceived and designed by
-          architect WilkinsonEyre and structural engineer Gifford.[1] The bridge
-          is sometimes referred to as the 'Blinking Eye Bridge'[2] or the
-          'Winking Eye Bridge'[3] due to its shape and its tilting method. In
-          terms of height, the Gateshead Millennium Bridge is slightly shorter
-          than the neighbouring Tyne Bridge, and stands as the sixteenth tallest
-          structure in the city.
+          The <strong>Queen Elizabeth II Bridge</strong> carries the Tyne and
+          Wear Metro between Newcastle upon Tyne and Gateshead over the River
+          Tyne in North East England. The line is in tunnels on either side of
+          the river and only emerges into open air to cross the bridge.
         </p>
       ),
       direction: "right",
@@ -180,8 +207,8 @@ const SimpleExample = ({ onClick }) => {
       name: "King Edward VII Bridge",
       position: [54.963213, -1.616214],
       icon: new LeafIcon({
-        iconUrl: require("./assets/king_edward_vii_bridge.jpg"),
-        iconRetinaUrl: require("./assets/king_edward_vii_bridge.jpg")
+        iconUrl: require("./assets/king_edward_vii_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/king_edward_vii_bridge_512x512.png")
       }),
       content: (
         <p>
@@ -202,20 +229,19 @@ const SimpleExample = ({ onClick }) => {
           through the station easing congestion.
         </p>
       ),
-      direction: "left",
-      offset: [-MARKER_RADIUS, 0],
+      direction: "bottom",
+      offset: [0, MARKER_RADIUS],
       positionOffset: [0.005, -0.014]
     },
     {
       name: "Redheugh Bridge",
       position: [54.962073, -1.618839],
       icon: new LeafIcon({
-        iconUrl: require("./assets/redheugh_bridge.jpg"),
-        iconRetinaUrl: require("./assets/redheugh_bridge.jpg")
+        iconUrl: require("./assets/redheugh_bridge_256x256.png"),
+        iconRetinaUrl: require("./assets/redheugh_bridge_512x512.png")
       }),
-
-      direction: "bottom",
-      offset: [0, MARKER_RADIUS],
+      direction: "top",
+      offset: [0, -MARKER_RADIUS],
       positionOffset: [-0.006, -0.003]
     }
   ];
@@ -233,6 +259,7 @@ const SimpleExample = ({ onClick }) => {
       touchZoom={false}
       dragging={false}
       keyboard={false}
+      onClick={e => console.log(e)}
     >
       <TileLayer
         //attribution={mbAttr}
@@ -254,9 +281,11 @@ const SimpleExample = ({ onClick }) => {
               <Tooltip
                 direction={d.direction || "left"}
                 offset={d.offset || [24, 0]}
+                opacity={1}
                 permanent
+                onClick={e => console.log(e)}
               >
-                {d.name}
+                {d.label || d.name}
               </Tooltip>
             </Marker>
             <CircleMarker
