@@ -250,7 +250,7 @@ function App() {
         <DialogContent>
           <img
             src={require(`./assets/${
-              bridge.id ? bridge.id + ".jpeg" : "tyne_bridge.jpeg"
+              bridge.id ? bridge.id + ".jpg" : "tyne_bridge.jpeg"
             }`)}
             style={{ width: "100%" }}
           />

@@ -17,10 +17,7 @@ const LeafIcon = L.Icon.extend({
   options: {
     iconAnchor: [MARKER_RADIUS, MARKER_RADIUS],
     popupAnchor: [10, -44],
-    iconSize: [MARKER_RADIUS * 2, MARKER_RADIUS * 2],
-    shadowUrl: "./assets/marker-shadow.png",
-    shadowSize: [64, 64],
-    shadowAnchor: [20, 92]
+    iconSize: [MARKER_RADIUS * 2, MARKER_RADIUS * 2]
   }
 });
 
@@ -76,8 +73,8 @@ const SimpleExample = ({ onClick }) => {
       name: "Gateshead Millennium Bridge",
       position: [54.969964, -1.599182],
       icon: new LeafIcon({
-        iconUrl: require("./assets/gateshead_millennium_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/gateshead_millennium_bridge_512x512.png")
+        iconUrl: require("./assets/gateshead_millennium_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/gateshead_millennium_bridge_256x256.jpg")
       }),
       content: (
         <p>
@@ -102,8 +99,8 @@ const SimpleExample = ({ onClick }) => {
       name: "Tyne Bridge",
       position: [54.968104, -1.606167],
       icon: new LeafIcon({
-        iconUrl: require("./assets/tyne_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/tyne_bridge_512x512.png")
+        iconUrl: require("./assets/tyne_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/tyne_bridge_256x256.jpg")
       }),
       content: (
         <p>
@@ -125,8 +122,8 @@ const SimpleExample = ({ onClick }) => {
       name: "Swing Bridge",
       position: [54.967575, -1.607586],
       icon: new LeafIcon({
-        iconUrl: require("./assets/swing_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/swing_bridge_512x512.png")
+        iconUrl: require("./assets/swing_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/swing_bridge_256x256.jpg")
       }),
       content: (
         <p>
@@ -155,8 +152,8 @@ const SimpleExample = ({ onClick }) => {
       name: "High Level Bridge",
       position: [54.967008, -1.608637],
       icon: new LeafIcon({
-        iconUrl: require("./assets/high_level_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/high_level_bridge_512x512.png")
+        iconUrl: require("./assets/high_level_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/high_level_bridge_256x256.jpg")
       }),
       content: (
         <p>
@@ -188,8 +185,8 @@ const SimpleExample = ({ onClick }) => {
       ),
       position: [54.964493, -1.613873],
       icon: new LeafIcon({
-        iconUrl: require("./assets/queen_elizabeth_ii_metro_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/queen_elizabeth_ii_metro_bridge_512x512.png")
+        iconUrl: require("./assets/queen_elizabeth_ii_metro_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/queen_elizabeth_ii_metro_bridge_256x256.jpg")
       }),
       content: (
         <p>
@@ -207,8 +204,8 @@ const SimpleExample = ({ onClick }) => {
       name: "King Edward VII Bridge",
       position: [54.963213, -1.616214],
       icon: new LeafIcon({
-        iconUrl: require("./assets/king_edward_vii_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/king_edward_vii_bridge_512x512.png")
+        iconUrl: require("./assets/king_edward_vii_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/king_edward_vii_bridge_256x256.jpg")
       }),
       content: (
         <p>
@@ -237,8 +234,8 @@ const SimpleExample = ({ onClick }) => {
       name: "Redheugh Bridge",
       position: [54.962073, -1.618839],
       icon: new LeafIcon({
-        iconUrl: require("./assets/redheugh_bridge_256x256.png"),
-        iconRetinaUrl: require("./assets/redheugh_bridge_512x512.png")
+        iconUrl: require("./assets/redheugh_bridge_128x128.jpg"),
+        iconRetinaUrl: require("./assets/redheugh_bridge_256x256.jpg")
       }),
       direction: "top",
       offset: [0, -MARKER_RADIUS],
