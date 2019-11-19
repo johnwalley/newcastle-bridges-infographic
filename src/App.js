@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import { makeStyles } from "@material-ui/core/styles";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
@@ -326,6 +324,7 @@ function App() {
             src={require(`./assets/${
               bridge.id ? bridge.id + ".jpg" : "tyne_bridge.jpeg"
             }`)}
+            alt={bridge.name}
             style={{ width: "100%" }}
           />
           <DialogContentText>{bridge.content}</DialogContentText>

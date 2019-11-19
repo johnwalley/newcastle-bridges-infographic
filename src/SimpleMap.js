@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Map,
   TileLayer,
@@ -57,13 +57,13 @@ const mbAttr =
 const mbUrl =
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}{r}.png?access_token=pk.eyJ1Ijoiam9obndhbGxleSIsImEiOiJjajhvZ2x0aGcwM2g5Mnhxazd0d3dzN2VkIn0.75gW-934leS0dstEuhzwsg";
 
-const SimpleExample = ({ onClick }) => {
-  const [state, setState] = useState({
-    lat: 54.9675,
-    lng: -1.6078,
-    zoom: 12
-  });
+const state = {
+  lat: 54.9675,
+  lng: -1.6078,
+  zoom: 12
+};
 
+const SimpleExample = ({ onClick }) => {
   const bridges = [
     {
       name: "Gateshead Millennium Bridge",
@@ -255,7 +255,7 @@ const SimpleExample = ({ onClick }) => {
       onClick={e => console.log(e)}
     >
       <TileLayer
-        //attribution={mbAttr}
+        attribution={mbAttr}
         url={mbUrl}
         id="mapbox.light"
         detectRetina={true}

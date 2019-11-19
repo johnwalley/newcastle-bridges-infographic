@@ -5,46 +5,19 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { makeStyles } from "@material-ui/core/styles";
 import { useTable, useSortBy } from "react-table";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const BAR_COLOR = "rgb(98,158,215)";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%"
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    width: "100%",
-    overflowX: "auto",
-    marginBottom: theme.spacing(2)
-  },
-  table: {
-    minWidth: 650
-  },
-  cell: {
-    width: "20%"
-  }
-}));
-
 function formatNumber(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function Table({ columns, data }) {
-  const classes = useStyles();
-
   // Use the state and functions returned from useTable to build your UI
-  const {
-    getTableProps,
-    getTableHeaderProps,
-    headerGroups,
-    rows,
-    prepareRow
-  } = useTable(
+  const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data
