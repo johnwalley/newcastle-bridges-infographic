@@ -23,7 +23,7 @@ const LeafIcon = L.Icon.extend({
 
 const StyledMap = styled(Map)`
   width: 100vw;
-  height: 80vmin;
+  height: 76vmin;
 
   .leaflet-tooltip {
     font-size: 18px;
@@ -31,10 +31,6 @@ const StyledMap = styled(Map)`
   }
 
   .leaflet-marker-icon {
-    margin-left: -48px;
-    margin-top: -48px;
-    width: 96px;
-    height: 96px;
     border-radius: 50%;
     border: 2px solid black;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -246,8 +242,8 @@ const SimpleExample = ({ onClick }) => {
   return (
     <StyledMap
       bounds={[
-        [state.lat - 0.014, state.lng - 0.014],
-        [state.lat + 0.014, state.lng + 0.014]
+        [state.lat - 0.0144, state.lng - 0.014],
+        [state.lat + 0.0136, state.lng + 0.014]
       ]}
       zoomControl={false}
       attributionControl={false}

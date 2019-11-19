@@ -7,7 +7,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTable, useSortBy } from "react-table";
-import { setState } from "expect/build/jestMatchersObject";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const BAR_COLOR = "rgb(98,158,215)";
 
@@ -88,22 +89,9 @@ function Table({ columns, data }) {
 }
 
 function App() {
-  const [width, setWidth] = React.useState(0);
-  const classes = useStyles();
-
-  React.useEffect(() => {
-    function handleResize() {
-      setWidth(document.documentElement.clientWidth);
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return _ => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
+  const theme = useTheme();
+  const matchesSmall = useMediaQuery(theme.breakpoints.up("sm"));
+  const matchesMedium = useMediaQuery(theme.breakpoints.up("md"));
 
   const columns = React.useMemo(
     () => [
@@ -119,7 +107,7 @@ function App() {
       {
         Header: "Total length (m)",
         accessor: "length",
-        show: width > 680,
+        show: matchesSmall,
         Cell: ({ cell: { value } }) => {
           const proportion = (100 * value) / 897;
 
@@ -153,7 +141,7 @@ function App() {
       {
         Header: "Longest span (m)",
         accessor: "span",
-        show: width > 680,
+        show: matchesMedium,
         Cell: ({ cell: { value } }) => {
           const proportion = (100 * value) / 161;
 
@@ -185,40 +173,42 @@ function App() {
         }
       },
       {
-        Header: "Cost - inflation adjusted (£)",
+        Header: "Cost (£)",
         accessor: "cost",
         Cell: ({ cell: { value } }) => {
-          const proportion = (100 * value) / 74053333;
+          const proportion = (100 * value) / 74053000;
 
           return (
             <div style={{ display: "flex", flexDirection: "horizontal" }}>
               <div style={{ flex: "0 0 auto", paddingRight: "6px" }}>
                 {formatNumber(value)}
               </div>
-              <div
-                style={{
-                  flex: "1 1 auto",
-                  height: "16px",
-                  backgroundColor: "#dadada",
-                  borderRadius: "2px"
-                }}
-              >
+              {matchesSmall && (
                 <div
                   style={{
-                    width: `${proportion}%`,
-                    height: "100%",
-                    backgroundColor: BAR_COLOR,
-                    borderRadius: "2px",
-                    transition: "all .2s ease-out"
+                    flex: "1 1 auto",
+                    height: "16px",
+                    backgroundColor: "#dadada",
+                    borderRadius: "2px"
                   }}
-                />
-              </div>
+                >
+                  <div
+                    style={{
+                      width: `${proportion}%`,
+                      height: "100%",
+                      backgroundColor: BAR_COLOR,
+                      borderRadius: "2px",
+                      transition: "all .2s ease-out"
+                    }}
+                  />
+                </div>
+              )}
             </div>
           );
         }
       }
     ],
-    [document.documentElement.clientWidth]
+    [matchesSmall, matchesMedium]
   );
 
   function createData(name, opened, length, span, cost) {
@@ -226,16 +216,58 @@ function App() {
   }
 
   const rows = [
-    createData("Gateshead Millenium Bridge", 2001, 126, 105, 35743162), // 22 000 000
-    createData("Tyne Bridge", 1928, 389, 161, 74053333), // 12 000 000
-    createData("Swing Bridge", 1876, 171, 85, 27203265), // 240 000
-    createData("High Level Bridge", 1849, 407, 38, 30328584), // 243000
-    createData("Queen Elizabeth II Metro Bridge", 1981, 352, 164, 22592542), // 6 000 000
-    createData("King Edward VII Bridge", 1906, 350, 91, 59720430), // 500 000
-    createData("Redheugh Bridge", 1983, 897, 160, 50882661) // 15 350 000
+    createData(
+      "Gateshead Millenium Bridge",
+      2001,
+      126,
+      105,
+      1000 * Math.floor(35743162 / 1000)
+    ), // 22 000 000
+    createData(
+      "Tyne Bridge",
+      1928,
+      389,
+      161,
+      1000 * Math.floor(74053333 / 1000)
+    ), // 12 000 000
+    createData(
+      "Swing Bridge",
+      1876,
+      171,
+      85,
+      1000 * Math.floor(27203265 / 1000)
+    ), // 240 000
+    createData(
+      "High Level Bridge",
+      1849,
+      407,
+      38,
+      1000 * Math.floor(30328584 / 1000)
+    ), // 243000
+    createData(
+      "Queen Elizabeth II Metro Bridge",
+      1981,
+      352,
+      164,
+      1000 * Math.floor(22592542 / 1000)
+    ), // 6 000 000
+    createData(
+      "King Edward VII Bridge",
+      1906,
+      350,
+      91,
+      1000 * Math.floor(59720430 / 1000)
+    ), // 500 000
+    createData(
+      "Redheugh Bridge",
+      1983,
+      897,
+      160,
+      1000 * Math.floor(50882661 / 1000)
+    ) // 15 350 000
   ];
 
-  const data = React.useMemo(() => rows, []);
+  const data = React.useMemo(() => rows, [rows]);
 
   return (
     <div>
