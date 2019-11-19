@@ -30,6 +30,12 @@ const useStyles = makeStyles(theme => ({
 
 const tileData = [
   {
+    img: require("./assets/historical/tyne_bridge_01.jpg"),
+    title: "Tyne Bridge",
+    author: "author",
+    cols: 1
+  },
+  {
     img: require("./assets/historical/swing_bridge_01.jpg"),
     title: "Swing Bridge",
     author: "author",
@@ -41,12 +47,7 @@ const tileData = [
     author: "author",
     cols: 1
   },
-  {
-    img: require("./assets/historical/tyne_bridge_01.jpg"),
-    title: "Tyne Bridge",
-    author: "author",
-    cols: 1
-  },
+
   {
     img: require("./assets/historical/tyne_bridge_02.jpg"),
     title: "Tyne Bridge",
