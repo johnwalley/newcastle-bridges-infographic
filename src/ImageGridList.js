@@ -37,115 +37,115 @@ const tileData = [
   },
   {
     img: require("./assets/historical/swing_bridge_02.jpg"),
-    title: "Image",
+    title: "Swing Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/tyne_bridge_01.jpg"),
-    title: "Image",
+    title: "Tyne Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/tyne_bridge_02.jpg"),
-    title: "Image",
+    title: "Tyne Bridge",
     author: "author",
     cols: 2
   },
   {
     img: require("./assets/historical/tyne_bridge_03.jpg"),
-    title: "Image",
+    title: "Tyne Bridge",
     author: "author",
     cols: 2
   },
   {
     img: require("./assets/historical/redheugh_bridge_01.jpg"),
-    title: "Image",
+    title: "Redheugh Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/queen_elizabeth_ii_metro_bridge_01.jpg"),
-    title: "Image",
+    title: "Queen Elizabeth II Metro Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/high_level_bridge_01.jpg"),
-    title: "Image",
+    title: "High Level Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/high_level_bridge_02.jpg"),
-    title: "Image",
+    title: "High Level Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/high_level_bridge_03.jpg"),
-    title: "Image",
+    title: "High Level Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/tyne_bridge_04.jpg"),
-    title: "Image",
+    title: "Tyne Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/old_tyne_bridge_01.jpg"),
-    title: "Image",
+    title: "Old Tyne Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/high_level_bridge_04.jpg"),
-    title: "Image",
+    title: "High Level Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/old_tyne_bridge_02.jpg"),
-    title: "Image",
+    title: "Old Tyne Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/old_tyne_bridge_03.jpg"),
-    title: "Image",
+    title: "Old Tyne Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/high_level_bridge_05.jpg"),
-    title: "Image",
+    title: "High Level Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/high_level_bridge_06.jpg"),
-    title: "Image",
+    title: "High Level Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/old_redheugh_bridge_01.jpg"),
-    title: "Image",
+    title: "Old Redheugh Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/tyne_bridge_05.jpg"),
-    title: "Image",
+    title: "Tyne Bridge",
     author: "author",
     cols: 1
   },
   {
     img: require("./assets/historical/king_edward_vii_01.jpg"),
-    title: "Image",
+    title: "King Edward VII Bridge",
     author: "author",
     cols: 1
   }
