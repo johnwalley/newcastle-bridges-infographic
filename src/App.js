@@ -273,7 +273,7 @@ function App() {
   return (
     <div className="App">
       <SectionHeader>
-        <h2>Newcastle's Iconic Bridges</h2>
+        <h2>The Tyne's Iconic Bridges</h2>
       </SectionHeader>
       <SimpleMap onClick={name => handleClickOpen(name)} />
       <SectionHeader>
@@ -283,11 +283,13 @@ function App() {
       <SectionHeader>
         <h2>
           Historical photos
-          <IconButton className={classes.button} size="small" aria-label="info">
-            <InfoIcon
-              style={{ color: "white !important" }}
-              onClick={handlePopupClick}
-            />
+          <IconButton
+            className={classes.button}
+            size="small"
+            aria-label="info"
+            onClick={handlePopupClick}
+          >
+            <InfoIcon style={{ color: "white !important" }} />
           </IconButton>
         </h2>
         <Popover
