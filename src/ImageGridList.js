@@ -193,9 +193,13 @@ export default function ImageGridList() {
           spacing={0}
           cellHeight={matchesSmall ? (matchesMedium ? 240 : 180) : 120}
         >
-          {tileData.map(tile => (
+          {tileData.map((tile, i) => (
             <GridListTile key={tile.img}>
-              <img src={tile.img} alt={tile.title} />
+              <img
+                src={tile.img}
+                alt={tile.title}
+                onClick={() => toggleLightbox(i)}
+              />
             </GridListTile>
           ))}
         </GridList>
