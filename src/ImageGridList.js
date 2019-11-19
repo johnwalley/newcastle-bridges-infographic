@@ -169,41 +169,23 @@ export default function ImageGridList() {
 
   return (
     <div className={classes.root}>
-      {matchesSmall ? (
-        <GridList
-          cols={matchesMedium ? 5 : 4}
-          spacing={0}
-          cellHeight={matchesSmall ? (matchesMedium ? 240 : 180) : 120}
-        >
-          {tileData.map((tile, i) => (
-            <GridListTile key={tile.img} cols={1}>
-              <img
-                src={tile.img}
-                alt={tile.title}
-                style={{ cursor: "pointer" }}
-                onClick={() => toggleLightbox(i)}
-              />
-            </GridListTile>
-          ))}
-        </GridList>
-      ) : (
-        <GridList
-          className={classes.gridList}
-          cols={2.5}
-          spacing={0}
-          cellHeight={matchesSmall ? (matchesMedium ? 240 : 180) : 120}
-        >
-          {tileData.map((tile, i) => (
-            <GridListTile key={tile.img}>
-              <img
-                src={tile.img}
-                alt={tile.title}
-                onClick={() => toggleLightbox(i)}
-              />
-            </GridListTile>
-          ))}
-        </GridList>
-      )}
+      <GridList
+        cols={matchesSmall ? (matchesMedium ? 5 : 4) : 2}
+        spacing={0}
+        cellHeight={matchesSmall ? (matchesMedium ? 240 : 180) : 120}
+      >
+        {tileData.map((tile, i) => (
+          <GridListTile key={tile.img} cols={1}>
+            <img
+              src={tile.img}
+              alt={tile.title}
+              style={{ cursor: "pointer" }}
+              onClick={() => toggleLightbox(i)}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+
       <ModalGateway>
         {lightboxIsOpen ? (
           <Modal
