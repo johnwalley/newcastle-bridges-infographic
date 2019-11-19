@@ -271,7 +271,7 @@ function App() {
   return (
     <div className="App">
       <SectionHeader>
-        <h2>The Tyne's Iconic Bridges</h2>
+        <h2>Tyne Bridges</h2>
       </SectionHeader>
       <SimpleMap onClick={name => handleClickOpen(name)} />
       <SectionHeader>
