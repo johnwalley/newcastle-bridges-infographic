@@ -16,8 +16,10 @@ import Popover from "@material-ui/core/Popover";
 import FactsAndFiguresTable from "./FactsAndFiguresTable";
 import SimpleMap from "./SimpleMap";
 import ImageGridList from "./ImageGridList";
-
 import "./App.css";
+
+ReactGA.initialize("UA-152930549-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const SectionHeader = styled.div`
   font-family: "Crimson Text", serif;
