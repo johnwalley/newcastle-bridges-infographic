@@ -219,6 +219,12 @@ function App() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClickOpen = name => {
+    ReactGA.event({
+      category: "Map",
+      action: "Bridge click",
+      label: name
+    });
+
     setOpen(true);
     setName(name);
   };
