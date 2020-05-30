@@ -250,9 +250,8 @@ const SimpleExample = ({ onClick }) => {
       scrollWheelZoom={false}
       doubleClickZoom={false}
       touchZoom={false}
-      dragging={false}
+      dragging={true}
       keyboard={false}
-      onClick={e => console.log(e)}
     >
       <TileLayer
         attribution={mbAttr}
