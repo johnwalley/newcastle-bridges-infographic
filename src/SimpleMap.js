@@ -1,14 +1,15 @@
-import React from "react";
 import {
-  Map,
-  TileLayer,
-  Marker,
   CircleMarker,
-  Polyline,
   LayerGroup,
-  Tooltip
+  Map,
+  Marker,
+  Polyline,
+  TileLayer,
+  Tooltip,
 } from "react-leaflet";
+
 import L from "leaflet";
+import React from "react";
 import styled from "styled-components";
 
 const MARKER_RADIUS = 48;
@@ -17,8 +18,8 @@ const LeafIcon = L.Icon.extend({
   options: {
     iconAnchor: [MARKER_RADIUS, MARKER_RADIUS],
     popupAnchor: [10, -44],
-    iconSize: [MARKER_RADIUS * 2, MARKER_RADIUS * 2]
-  }
+    iconSize: [MARKER_RADIUS * 2, MARKER_RADIUS * 2],
+  },
 });
 
 const StyledMap = styled(Map)`
@@ -50,17 +51,23 @@ const StyledMap = styled(Map)`
   }
 `;
 
+const access_token =
+  "pk.eyJ1Ijoiam9obndhbGxleSIsImEiOiJjajhvZ2x0aGcwM2g5Mnhxazd0d3dzN2VkIn0.75gW-934leS0dstEuhzwsg";
+const username = "mapbox";
+const style_id = "light-v10";
+const tilesize = "512";
+
 const mbAttr =
   'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
   '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
-const mbUrl =
-  "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}{r}.png?access_token=pk.eyJ1Ijoiam9obndhbGxleSIsImEiOiJjajhvZ2x0aGcwM2g5Mnhxazd0d3dzN2VkIn0.75gW-934leS0dstEuhzwsg";
+
+const mbUrl = `https://api.mapbox.com/styles/v1/${username}/${style_id}/tiles/${tilesize}/{z}/{x}/{y}@2x?access_token=${access_token}`;
 
 const state = {
   lat: 54.9675,
   lng: -1.6078,
-  zoom: 12
+  zoom: 12,
 };
 
 const SimpleExample = ({ onClick }) => {
@@ -70,7 +77,7 @@ const SimpleExample = ({ onClick }) => {
       position: [54.969964, -1.599182],
       icon: new LeafIcon({
         iconUrl: require("./assets/gateshead_millennium_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/gateshead_millennium_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/gateshead_millennium_bridge_256x256.jpg"),
       }),
       content: (
         <p>
@@ -89,14 +96,14 @@ const SimpleExample = ({ onClick }) => {
       ),
       direction: "bottom",
       offset: [0, MARKER_RADIUS],
-      positionOffset: [0.008, 0.01]
+      positionOffset: [0.008, 0.01],
     },
     {
       name: "Tyne Bridge",
       position: [54.968104, -1.606167],
       icon: new LeafIcon({
         iconUrl: require("./assets/tyne_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/tyne_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/tyne_bridge_256x256.jpg"),
       }),
       content: (
         <p>
@@ -112,14 +119,14 @@ const SimpleExample = ({ onClick }) => {
       ),
       direction: "top",
       offset: [0, -MARKER_RADIUS],
-      positionOffset: [0.008, 0.0]
+      positionOffset: [0.008, 0.0],
     },
     {
       name: "Swing Bridge",
       position: [54.967575, -1.607586],
       icon: new LeafIcon({
         iconUrl: require("./assets/swing_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/swing_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/swing_bridge_256x256.jpg"),
       }),
       content: (
         <p>
@@ -142,14 +149,14 @@ const SimpleExample = ({ onClick }) => {
       ),
       direction: "right",
       offset: [MARKER_RADIUS, 0],
-      positionOffset: [-0.005, 0.015]
+      positionOffset: [-0.005, 0.015],
     },
     {
       name: "High Level Bridge",
       position: [54.967008, -1.608637],
       icon: new LeafIcon({
         iconUrl: require("./assets/high_level_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/high_level_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/high_level_bridge_256x256.jpg"),
       }),
       content: (
         <p>
@@ -168,7 +175,7 @@ const SimpleExample = ({ onClick }) => {
       ),
       direction: "left",
       offset: [-MARKER_RADIUS, 0],
-      positionOffset: [0.008, -0.01]
+      positionOffset: [0.008, -0.01],
     },
     {
       name: "Queen Elizabeth II Metro Bridge",
@@ -182,7 +189,7 @@ const SimpleExample = ({ onClick }) => {
       position: [54.964493, -1.613873],
       icon: new LeafIcon({
         iconUrl: require("./assets/queen_elizabeth_ii_metro_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/queen_elizabeth_ii_metro_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/queen_elizabeth_ii_metro_bridge_256x256.jpg"),
       }),
       content: (
         <p>
@@ -194,14 +201,14 @@ const SimpleExample = ({ onClick }) => {
       ),
       direction: "right",
       offset: [MARKER_RADIUS, 0],
-      positionOffset: [-0.008, 0.01]
+      positionOffset: [-0.008, 0.01],
     },
     {
       name: "King Edward VII Bridge",
       position: [54.963213, -1.616214],
       icon: new LeafIcon({
         iconUrl: require("./assets/king_edward_vii_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/king_edward_vii_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/king_edward_vii_bridge_256x256.jpg"),
       }),
       content: (
         <p>
@@ -224,26 +231,26 @@ const SimpleExample = ({ onClick }) => {
       ),
       direction: "bottom",
       offset: [0, MARKER_RADIUS],
-      positionOffset: [0.005, -0.014]
+      positionOffset: [0.005, -0.014],
     },
     {
       name: "Redheugh Bridge",
       position: [54.962073, -1.618839],
       icon: new LeafIcon({
         iconUrl: require("./assets/redheugh_bridge_128x128.jpg"),
-        iconRetinaUrl: require("./assets/redheugh_bridge_256x256.jpg")
+        iconRetinaUrl: require("./assets/redheugh_bridge_256x256.jpg"),
       }),
       direction: "top",
       offset: [0, -MARKER_RADIUS],
-      positionOffset: [-0.006, -0.003]
-    }
+      positionOffset: [-0.006, -0.003],
+    },
   ];
 
   return (
     <StyledMap
       bounds={[
         [state.lat - 0.0144, state.lng - 0.014],
-        [state.lat + 0.0136, state.lng + 0.014]
+        [state.lat + 0.0136, state.lng + 0.014],
       ]}
       zoomControl={false}
       attributionControl={false}
@@ -253,19 +260,14 @@ const SimpleExample = ({ onClick }) => {
       dragging={true}
       keyboard={false}
     >
-      <TileLayer
-        attribution={mbAttr}
-        url={mbUrl}
-        id="mapbox.light"
-        detectRetina={true}
-      />
+      <TileLayer attribution={mbAttr} url={mbUrl} />
       <LayerGroup>
-        {bridges.map(d => (
+        {bridges.map((d) => (
           <React.Fragment key={d.name}>
             <Marker
               position={[
                 d.position[0] + (d.positionOffset ? d.positionOffset[0] : 0.0),
-                d.position[1] + (d.positionOffset ? d.positionOffset[1] : 0.0)
+                d.position[1] + (d.positionOffset ? d.positionOffset[1] : 0.0),
               ]}
               icon={d.icon}
               onClick={() => onClick(d.name)}
@@ -275,7 +277,7 @@ const SimpleExample = ({ onClick }) => {
                 offset={d.offset || [24, 0]}
                 opacity={1}
                 permanent
-                onClick={e => console.log(e)}
+                onClick={(e) => console.log(e)}
               >
                 {d.label || d.name}
               </Tooltip>
@@ -292,8 +294,8 @@ const SimpleExample = ({ onClick }) => {
                 d.position,
                 [
                   d.position[0] + (d.positionOffset ? d.positionOffset[0] : 0),
-                  d.position[1] + (d.positionOffset ? d.positionOffset[1] : 0)
-                ]
+                  d.position[1] + (d.positionOffset ? d.positionOffset[1] : 0),
+                ],
               ]}
               color="red"
               weight={1}
